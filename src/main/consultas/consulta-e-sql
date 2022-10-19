@@ -1,0 +1,6 @@
+select rating,count(*) c
+from actor,film f
+where  rating in ('PG','PG-13','G')
+group by first_name, last_name,rating
+order by c desc
+;

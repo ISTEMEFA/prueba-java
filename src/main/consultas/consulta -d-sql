@@ -1,0 +1,6 @@
+select rating,count(*) c
+from film f,language l
+where l.language_id = '5'
+group by rating
+order by c desc
+;

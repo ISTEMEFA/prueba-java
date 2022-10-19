@@ -1,0 +1,6 @@
+select  title,length,release_year,rental_rate,special_features
+from film f
+where rating = 'R' and rental_rate >4
+order by rating desc
+limit 10;
+;

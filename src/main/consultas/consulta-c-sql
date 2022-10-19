@@ -1,0 +1,5 @@
+select film_id,title,release_year,rating
+from film f,category c ,actor
+ where  category_id = 11 and first_name = 'SUSAN' and last_name = 'DAVIS'
+order by title ASC
+;
