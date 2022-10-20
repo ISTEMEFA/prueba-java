@@ -5,6 +5,7 @@ import com.example.pruebajava.models.Category;
 import com.example.pruebajava.models.Films;
 import com.example.pruebajava.services.ActorServices;
 import com.example.pruebajava.services.CategoryService;
+import com.example.pruebajava.services.FilmCategoryService;
 import com.example.pruebajava.services.FilmsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -27,6 +28,8 @@ public class IndexController {
     @Autowired
     FilmsService fs;
 
+    @Autowired
+    FilmCategoryService film_categoryService;
 
     @RequestMapping("/")
     public String index(Model model) {

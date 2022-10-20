@@ -1,5 +1,6 @@
 package com.example.pruebajava.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
@@ -16,11 +17,21 @@ public class Category {
     private String name;
     private Date last_update;
 
-    @OneToMany(mappedBy = "category_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Category> nombres;
+    @JsonManagedReference
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="film_category", joinColumns=@JoinColumn(name="category_id"),
+            inverseJoinColumns=@JoinColumn(name="film_id"))
+    private List<Films> films;
 
+    public List<Films> getFilms() {
+        return films;
+    }
 
-   /* @ManyToOne(fetch = FetchType.LAZY)
+    public void setFilms(List<Films> films) {
+        this.films = films;
+    }
+
+/* @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="category_id")
     private Films filmsName;*/
 
@@ -72,6 +83,4 @@ public class Category {
     public void setLast_update(Date last_update) {
         this.last_update = last_update;
     }
-
-
 }

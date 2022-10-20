@@ -1,5 +1,6 @@
 package com.example.pruebajava.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -19,11 +20,24 @@ public class Films {
     private float rental_duration;
     private double number;
 
+    @JsonBackReference
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="film_category", joinColumns=@JoinColumn(name="film_id"),
+            inverseJoinColumns=@JoinColumn(name="category_id"))
+    private List<Category> categories;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "film_id")
-    private Category nombrefilms;
+    public List<Category> getCategories() {
+        return categories;
+    }
 
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    /*    @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "film_id")
+        private Category nombrefilms;
+    */
     /*@OneToMany(mappedBy = "filmsName", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Category> nombresCategorias;*/
     public Films() {

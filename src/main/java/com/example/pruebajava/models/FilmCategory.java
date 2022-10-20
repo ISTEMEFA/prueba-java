@@ -1,6 +1,8 @@
 package com.example.pruebajava.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -15,8 +17,32 @@ public class FilmCategory {
     private Long category_id;
     private Date last_update;
 
-    @OneToMany(mappedBy = "nombrefilms", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Films> nombresCategorias;
+    @JsonBackReference
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="film_id", referencedColumnName = "film_id", insertable = false, updatable = false)
+    private Films film;
+
+    @JsonBackReference
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="category_id")
+    private Category category;
+
+    public Films getFilm() {
+        return film;
+    }
+
+    public void setFilm(Films film) {
+        this.film = film;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
 
     public FilmCategory() {
     }

@@ -20,8 +20,6 @@ public class FilmsService {
 
         return fs.findAll();
     }
-
-
     public List<Films> findAll(String filmsList, String categoryList) {
 
 
