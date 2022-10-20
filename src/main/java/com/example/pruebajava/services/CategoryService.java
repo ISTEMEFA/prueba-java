@@ -16,9 +16,10 @@ public class CategoryService {
     @Autowired
     CategoryRepositories cr;
 
-    public List <Category> findAll() {
 
-    return  cr.findAll();
+    public List<Category> findAll() {
+        return cr.findAll();
+
     }
 /*
     public List<Category> findallCategorias(String film) {

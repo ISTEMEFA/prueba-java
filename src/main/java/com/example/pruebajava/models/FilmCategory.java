@@ -24,7 +24,7 @@ public class FilmCategory {
 
     @JsonBackReference
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="category_id")
+    @JoinColumn(name="category_id",referencedColumnName = "category_id", insertable = false, updatable = false)
     private Category category;
 
     public Films getFilm() {

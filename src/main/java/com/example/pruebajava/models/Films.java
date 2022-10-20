@@ -20,6 +20,16 @@ public class Films {
     private float rental_duration;
     private double number;
 
+    private float replacement_cost;
+
+    public float getReplacement_cost() {
+        return replacement_cost;
+    }
+
+    public void setReplacement_cost(float replacement_cost) {
+        this.replacement_cost = replacement_cost;
+    }
+
     @JsonBackReference
     @ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(name="film_category", joinColumns=@JoinColumn(name="film_id"),

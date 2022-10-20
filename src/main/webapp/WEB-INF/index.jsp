@@ -24,19 +24,18 @@
     <form action="/seach" method="post">
         <div class="row">
             <div class="col">
-                <label for="films" class="form-label">Categoria</label>
-                <select name="films" id="films" class="form-select">
-                    <c:forEach items="${filmsList}" var="filmsList">
-                        <option value="${filmsList.film_id}">${filmsList.title}</option>
-                    </c:forEach>    </select>
-            </div>
-            <div class="col">
-                <label for="category" class="form-label">Titulo</label>
+                <label for="category" class="form-label">Categoria</label>
                 <select name="category" id="category" class="form-select">
                     <c:forEach items="${categoryList}" var="categoryList">
                         <option value="${categoryList.category_id}">${categoryList.name}</option>
-                    </c:forEach>    </select>
-                </select>
+                    </c:forEach></select>
+            </div>
+            <div class="col">
+                <label for="films" class="form-label">Titulo</label>
+                <div class="col">
+                    <input type="text" class="form-control" name="films"
+                           id="films">
+                </div>
             </div>
 
             <div class="col">
@@ -64,16 +63,16 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${filmsList}" var="films">
+            <c:forEach items="${filmCategory}" var="filmsList">
 
                 <tr>
-                    <td>${"!"}</td>
-                    <td>${films.film_id }</td>
-                    <td>${films.title }</td>
-                    <td>${films.rental_duration }</td>
-                    <td>${films.rating }</td>
-                    <td>${films.rental_rate }</td>
-                    <td>${films.rental_duration }</td>
+                    <td>${filmsList.category.name}</td>
+                    <td >${filmsList.film.film_id}</td>
+                    <td>${filmsList.film.title}</td>
+                    <td>${filmsList.film.length}</td>
+                    <td>${filmsList.film.rating}</td>
+                    <td>${filmsList.film.replacement_cost}</td>
+                    <td>${filmsList.film.rental_duration}</td>
                     <td> <a class="btn btn-primary" href="#">Ver</a></td>
                 </tr>
             </c:forEach>

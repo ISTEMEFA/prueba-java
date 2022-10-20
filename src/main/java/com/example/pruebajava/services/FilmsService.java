@@ -13,18 +13,17 @@ import java.util.List;
 public class FilmsService {
 
     @Autowired
-    FilmsRepository fs;
+    FilmsRepository fr;
 
 
     public List<Films> findAll(){
 
-        return fs.findAll();
+        return fr.findAll();
     }
-    public List<Films> findAll(String filmsList, String categoryList) {
+    public List<Films> findFilmBytitle(String filmUpper) {
 
-
-
-return fs.findAll();
+        return fr.findBytitle(filmUpper);
+    }
 
     }
-}
+
